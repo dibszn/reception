@@ -1457,6 +1457,9 @@
 	</div>
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
+			document.addEventListener('contextmenu', function(e) {
+            e.preventDefault(); 
+        });
 		  const fadeEls = document.querySelectorAll('.fadeIn');
 		  const observer = new IntersectionObserver(entries => {
 		    entries.forEach(entry => {
