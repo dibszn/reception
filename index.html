@@ -227,9 +227,8 @@
 					      index++;
 					      setTimeout(typeWriter, 80);
 					    } else {
-							setTimeout(() => { document.getElementById("formalinv").scrollIntoView({ behavior: "smooth" }); }, 800);	
-							/* setTimeout(() => { typedWrapper.classList.add("slideup2"); }, 1500); */		
-							setTimeout(() => { section21.remove();}, 800);							  
+							setTimeout(() => { typedWrapper.classList.add("slideup2"); }, 1500);		
+							setTimeout(() => { section21.remove(); document.getElementById("formalinv").scrollIntoView({ behavior: "smooth" });}, 800);							  
 					    }
 					  }
 					
