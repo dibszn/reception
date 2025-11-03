@@ -741,6 +741,7 @@
 									    const modal = document.getElementById("thanksModal");
 									    const modalTitle = document.getElementById("modalTitle");
 									    const modalMessage = document.getElementById("modalMessage");
+										const nameField = document.querySelector('input[name="firstname"]');
 									
 									    attendanceRadios.forEach(radio => {
 									      radio.addEventListener("change", () => {
@@ -753,8 +754,8 @@
 									            modalMessage.textContent = "See you on 21st December 🥳";
 									          } else if (radio.value === "No") {
 									            paxfield.style.display = "none";
-									            modalTitle.textContent = "Aw shucks 🥲";
-									            modalMessage.textContent = "See you when I see you";
+									            modalTitle.textContent = "Wish you were coming! 🥲";
+									            modalMessage.textContent = "Please celebrate with us from afar.";
 									          }
 									        }
 									      });
@@ -764,6 +765,12 @@
 									      e.preventDefault();
 											
 										const formData = new FormData(form);  
+											
+										if (!nameField.value.trim()) {
+											alert("Please enter your name before submitting.");
+											nameField.focus();
+											return; // Stop submission
+										}
       
 									      fetch(form.action, {
 									        method: "POST",
@@ -1470,4 +1477,5 @@
 	</script>
 </body>
 </html>
+
 
