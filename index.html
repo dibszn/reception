@@ -1330,35 +1330,42 @@
 								<div class="fe-block fe-block-e0d9248c8174d396b734A" style="mix-blend-mode:normal">
 									<div class="sqs-block html-block sqs-block-html" data-blend-mode="NORMAL" data-block-type="2" data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}" data-sqsp-block="text" id="block-e0d9248c8174d396b734">
 										<div class="sqs-block-content">
-											<style>#countdown-container {color:white; font-family:'Pinyon Script',cursive; margin-bottom:1.5vh; margin-top:1vh;} .countdownBox { display:flex; align-self:center; justify-content:space-between; color:white; } .countdownBox h4 {margin: 0.5vh} .SpaceDays, .SpaceHours, .SpaceMinutes, .SpaceSeconds { display:flex; flex-direction:column; flex:1; min-width:20%; align-items: center; padding-bottom:1vh; } .LabelDays, .LabelHours, .LabelMinutes, .LabelSeconds { color: #113c25; font-style: italic; opacity:0.9; margin-bottom: 0.5em; } .D-Day { display:none; color: #113c25; } #SpanDays, #SpanHours, #SpanMinutes, #SpanSeconds { color: #113c25; font-style:italic; font-weight:bold; line-height:1; margin-top:0.5em; } @media (max-width: 768px) {.countdownBox { flex-direction: column; gap: 0.8rem; } }</style>
+											<style>#countdown-container {color:white; font-family:'Pinyon Script',cursive; margin-bottom:1.5vh; margin-top:1vh;} .countdownBox { display:flex; align-self:center; justify-content:space-between; color:white; } .countdownBox h4 {margin: 0.5vh} .SpaceDays, .SpaceHours, .SpaceMinutes, .SpaceSeconds { display:flex; flex-direction:column; flex:1; min-width:20%; align-items: center; padding-bottom:1vh; } .LabelDays, .LabelHours, .LabelMinutes, .LabelSeconds { color: #113c25; font-style: italic; opacity:0.9; margin-bottom: 0.5em; }  .D-Day { display:none; color: #113c25; text-align: center;place-self: center;font-style: italic;font-size: xxx-large;} #SpanDays, #SpanHours, #SpanMinutes, #SpanSeconds { color: #113c25; font-style:italic; font-weight:bold; line-height:1; margin-top:0.5em; } @media (max-width: 768px) {.countdownBox { flex-direction: column; gap: 0.8rem; } } @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } } .pulse {animation: pulse 1.5s infinite; }</style>
 											<div class="sqs-html-content" data-sqsp-text-block-content="" style="justify-items: space-between;">
 												<div id="countdown-container">
-													<div class="countdownBox preFade fadeIn">
+													<div id="countdown" class="countdownBox preFade fadeIn">
 												    	<div class="SpaceDays preFade fadeIn">
-												    		<h4><span id="SpanDays">65</span></h4>
+												    		<h4><span id="SpanDays">0</span></h4>
 												          	<h4 class="LabelDays">days</h4>
 												        </div>
 												        <div class="SpaceHours preFade fadeIn">
-												          <h4><span id="SpanHours">05</span></h4>
+												          <h4><span id="SpanHours">0</span></h4>
 												          <h4 class="LabelHours">hours</h4>
 												        </div>
 												        <div class="SpaceMinutes preFade fadeIn">
-												          <h4><span id="SpanMinutes">32</span></h4>
+												          <h4><span id="SpanMinutes">0</span></h4>
 												          <h4 class="LabelMinutes">minutes</h4>
 												        </div>
 												        <div class="SpaceSeconds preFade fadeIn">
-												          <h4><span id="SpanSeconds">33</span></h4>
+												          <h4><span id="SpanSeconds">0</span></h4>
 												          <h4 class="LabelSeconds">seconds</h4>
 												        </div>
 												    </div>
-												    <div class="D-Day"> 🎉 It's D-day! 🎉 </div>
+												    <h3 id="D-Day" class="D-Day pulse preFade fadeIn visible"> 🎉 It's D-day! 🎉 </h3>
 												</div>
 											</div>
 											<script>
-												const targetDate = new Date('2025-12-21T09:00:00+08:00').getTime();
+												const countdown = document.getElementById('countdown');
+												const targetDate = new Date('2025-11-13T00:51:00+08:00').getTime();
 												function updateCountdown() {
 												const now = new Date().getTime();
 												const distance = targetDate - now;
+													if (distance <= 0) {
+												      countdown.remove();
+													document.getElementById('D-Day').style.display = 'flex';
+												      clearInterval(timer); // stop updating
+												      return;
+   												 }
 												const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 												const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 												const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -1483,6 +1490,7 @@
 	</script>
 </body>
 </html>
+
 
 
 
