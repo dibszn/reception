@@ -749,7 +749,8 @@
 									    const modalTitle = document.getElementById("modalTitle");
 									    const modalMessage = document.getElementById("modalMessage");
 										const nameField = document.querySelector('input[name="firstname"]');
-										const selectedAttendance = document.querySelector('input[name="attendance"]:checked');
+								
+										const attending = null;
 									
 									    attendanceRadios.forEach(radio => {
 									      radio.addEventListener("change", () => {
@@ -757,11 +758,13 @@
 									
 									          if (radio.value === "Yes") {
 									            paxfield.style.display = "block";
+												attending = "Y";
 												setTimeout(() => { paxfield.style.opacity = "1"; }, 150);
 									            modalTitle.textContent = "Thanks for the confirmation!";
 									            modalMessage.textContent = "See you on 21st December 🥳";
 									          } else if (radio.value === "No") {
 									            paxfield.style.display = "none";
+												attending = "N";
 									            modalTitle.textContent = "Wish you were coming! 🥲";
 									            modalMessage.textContent = "Please celebrate with us from afar.";
 									          }
@@ -772,6 +775,7 @@
 									    form.addEventListener("submit", e => {
 									      e.preventDefault();
 											
+										const selectedAttendance = document.querySelector('input[name="attendance"]:checked');
 										const formData = new FormData(form);  
 											
 										if (!nameField.value.trim()) {
@@ -780,18 +784,18 @@
 											return; // Stop submission
 										}
 
-										/*if (!selectedAttendance) {
+										if (!selectedAttendance) {
 											alert("Please confirm your attendance.");
-											selectedAttendance.focus();
+											
 											return;
-										}*/
+										}
 											
 
-										/*if ((selectedAttendance.value === "Yes") && (!paxInput.value.trim() || parseInt(paxInput.value) < 1)) {
+										if ((attending === "Y") && (!paxInput.value.trim() || parseInt(paxInput.value) < 1)) {
 											alert("Please confirm number of guests attending.");
 											paxInput.focus();
 											return;
-										}*/
+										}
 
       
 									      fetch(form.action, {
@@ -1506,6 +1510,7 @@
 	</script>
 </body>
 </html>
+
 
 
 
