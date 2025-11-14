@@ -777,6 +777,11 @@
 											nameField.focus();
 											return; // Stop submission
 										}
+
+										if (radio.value === "Yes" && (!paxfield.value.trim() || Number(paxfield.value) < 1)) {
+											alert("Please enter a valid number of guests");
+											return;
+										}
       
 									      fetch(form.action, {
 									        method: "POST",
@@ -1490,6 +1495,7 @@
 	</script>
 </body>
 </html>
+
 
 
 
