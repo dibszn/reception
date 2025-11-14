@@ -742,7 +742,8 @@
 									<script>
 									  document.addEventListener("DOMContentLoaded", () => {
 									    const paxfield = document.getElementById("paxfield");
-									    const attendanceRadios = document.getElementsByName("attendance");
+										const paxInput = paxfield.querySelector("input");
+										const attendanceRadios = document.getElementsByName("attendance");
 									    const form = document.getElementById("bootstrapForm");
 									    const modal = document.getElementById("thanksModal");
 									    const modalTitle = document.getElementById("modalTitle");
@@ -778,11 +779,11 @@
 											return; // Stop submission
 										}
 
-										/*if ((paxfield.style.opacity === "1") && (!paxfield.value.trim() || parseInt(paxfield.value) < 1)) {
+										if ((paxfield.style.opacity === "1") && (!paxInput.value.trim() || parseInt(paxInput.value) < 1)) {
 											alert("Please confirm number of guests attending.");
-											paxfield.focus();
+											paxInput.focus();
 											return;
-										}*/
+										}
 
       
 									      fetch(form.action, {
@@ -1497,6 +1498,7 @@
 	</script>
 </body>
 </html>
+
 
 
 
