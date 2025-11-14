@@ -778,6 +778,12 @@
 											return; // Stop submission
 										}
 
+										if ((paxfield.style.opacity === "1") && (!paxfield.value.trim() || parseInt(paxfield.value) < 1)) {
+											alert("Please confirm number of guests attending.");
+											paxfield.focus();
+											return;
+										}
+
       
 									      fetch(form.action, {
 									        method: "POST",
@@ -1491,6 +1497,7 @@
 	</script>
 </body>
 </html>
+
 
 
 
